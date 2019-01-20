@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ShortenerURLService WSDL service -->
+
+  <service name="ShortenerURL" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://url.shortener.com"/>
+      <parameter name="wsdlServiceElement" value="ShortenerURLService"/>
+      <parameter name="schemaQualified" value="http://analitics.bo.url.shortener.com,http://expander.bo.url.shortener.com,http://url.shortener.com,http://shortener.bo.url.shortener.com,http://bo.url.shortener.com"/>
+      <parameter name="wsdlServicePort" value="ShortenerURL"/>
+      <parameter name="className" value="com.shortener.url.ShortenerURL"/>
+      <parameter name="wsdlPortType" value="ShortenerURL"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://url.shortener.com" xmlns:retNS="http://url.shortener.com" xmlns:rtns="http://bo.url.shortener.com" name="reset" qname="operNS:reset" returnQName="retNS:resetReturn" returnType="rtns:ResetResponse" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://url.shortener.com" xmlns:retNS="http://url.shortener.com" xmlns:rtns="http://shortener.bo.url.shortener.com" name="shortURL" qname="operNS:shortURL" returnQName="retNS:shortURLReturn" returnType="rtns:ShortURLResponse" soapAction="">
+        <parameter xmlns:pns="http://url.shortener.com" xmlns:tns="http://shortener.bo.url.shortener.com" qname="pns:request" type="tns:ShortURLRequest"/>
+      </operation>
+      <operation xmlns:operNS="http://url.shortener.com" xmlns:retNS="http://url.shortener.com" xmlns:rtns="http://analitics.bo.url.shortener.com" name="getStatistics" qname="operNS:getStatistics" returnQName="retNS:getStatisticsReturn" returnType="rtns:StatisticsResponse" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://url.shortener.com" xmlns:retNS="http://url.shortener.com" xmlns:rtns="http://expander.bo.url.shortener.com" name="expandURL" qname="operNS:expandURL" returnQName="retNS:expandURLReturn" returnType="rtns:ExpandURLResponse" soapAction="">
+        <parameter xmlns:pns="http://url.shortener.com" xmlns:tns="http://expander.bo.url.shortener.com" qname="pns:request" type="tns:ExpandURLRequest"/>
+      </operation>
+      <parameter name="allowedMethods" value="getStatistics shortURL reset expandURL"/>
+
+      <typeMapping xmlns:ns="http://analitics.bo.url.shortener.com" qname="ns:StatisticsResponse" type="java:com.shortener.url.bo.analitics.StatisticsResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://shortener.bo.url.shortener.com" qname="ns:ShortURLResponse" type="java:com.shortener.url.bo.shortener.ShortURLResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://bo.url.shortener.com" qname="ns:BaseResponse" type="java:com.shortener.url.bo.BaseResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://expander.bo.url.shortener.com" qname="ns:ExpandURLRequest" type="java:com.shortener.url.bo.expander.ExpandURLRequest" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://expander.bo.url.shortener.com" qname="ns:ExpandURLResponse" type="java:com.shortener.url.bo.expander.ExpandURLResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://bo.url.shortener.com" qname="ns:ResetResponse" type="java:com.shortener.url.bo.ResetResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://shortener.bo.url.shortener.com" qname="ns:ShortURLRequest" type="java:com.shortener.url.bo.shortener.ShortURLRequest" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>

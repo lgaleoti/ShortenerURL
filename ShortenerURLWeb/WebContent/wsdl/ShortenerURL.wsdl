@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://url.shortener.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://url.shortener.com" xmlns:intf="http://url.shortener.com" xmlns:tns1="http://bo.url.shortener.com" xmlns:tns2="http://shortener.bo.url.shortener.com" xmlns:tns3="http://analitics.bo.url.shortener.com" xmlns:tns4="http://expander.bo.url.shortener.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://url.shortener.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://bo.url.shortener.com"/>
+   <import namespace="http://shortener.bo.url.shortener.com"/>
+   <import namespace="http://expander.bo.url.shortener.com"/>
+   <import namespace="http://analitics.bo.url.shortener.com"/>
+   <element name="reset">
+    <complexType/>
+   </element>
+   <element name="resetResponse">
+    <complexType>
+     <sequence>
+      <element name="resetReturn" type="tns1:ResetResponse"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="shortURL">
+    <complexType>
+     <sequence>
+      <element name="request" type="tns2:ShortURLRequest"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="shortURLResponse">
+    <complexType>
+     <sequence>
+      <element name="shortURLReturn" type="tns2:ShortURLResponse"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getStatistics">
+    <complexType/>
+   </element>
+   <element name="getStatisticsResponse">
+    <complexType>
+     <sequence>
+      <element name="getStatisticsReturn" type="tns3:StatisticsResponse"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="expandURL">
+    <complexType>
+     <sequence>
+      <element name="request" type="tns4:ExpandURLRequest"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="expandURLResponse">
+    <complexType>
+     <sequence>
+      <element name="expandURLReturn" type="tns4:ExpandURLResponse"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://bo.url.shortener.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://shortener.bo.url.shortener.com"/>
+   <import namespace="http://expander.bo.url.shortener.com"/>
+   <import namespace="http://analitics.bo.url.shortener.com"/>
+   <complexType name="BaseResponse">
+    <sequence>
+     <element name="code" type="xsd:int"/>
+     <element name="message" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ResetResponse">
+    <complexContent>
+     <extension base="tns1:BaseResponse">
+      <sequence>
+       <element name="date" nillable="true" type="xsd:dateTime"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://shortener.bo.url.shortener.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://bo.url.shortener.com"/>
+   <import namespace="http://expander.bo.url.shortener.com"/>
+   <import namespace="http://analitics.bo.url.shortener.com"/>
+   <complexType name="ShortURLRequest">
+    <sequence>
+     <element name="url" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ShortURLResponse">
+    <complexContent>
+     <extension base="tns1:BaseResponse">
+      <sequence>
+       <element name="newURL" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://analitics.bo.url.shortener.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://bo.url.shortener.com"/>
+   <import namespace="http://shortener.bo.url.shortener.com"/>
+   <import namespace="http://expander.bo.url.shortener.com"/>
+   <complexType name="StatisticsResponse">
+    <sequence>
+     <element name="code" type="xsd:int"/>
+     <element name="message" nillable="true" type="xsd:string"/>
+     <element name="statistics" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://expander.bo.url.shortener.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://bo.url.shortener.com"/>
+   <import namespace="http://shortener.bo.url.shortener.com"/>
+   <import namespace="http://analitics.bo.url.shortener.com"/>
+   <complexType name="ExpandURLRequest">
+    <sequence>
+     <element name="url" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ExpandURLResponse">
+    <sequence>
+     <element name="code" type="xsd:int"/>
+     <element name="message" nillable="true" type="xsd:string"/>
+     <element name="originalURL" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="shortURLRequest">
+
+      <wsdl:part element="impl:shortURL" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="resetResponse">
+
+      <wsdl:part element="impl:resetResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getStatisticsRequest">
+
+      <wsdl:part element="impl:getStatistics" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getStatisticsResponse">
+
+      <wsdl:part element="impl:getStatisticsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="resetRequest">
+
+      <wsdl:part element="impl:reset" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="expandURLResponse">
+
+      <wsdl:part element="impl:expandURLResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="shortURLResponse">
+
+      <wsdl:part element="impl:shortURLResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="expandURLRequest">
+
+      <wsdl:part element="impl:expandURL" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ShortenerURL">
+
+      <wsdl:operation name="reset">
+
+         <wsdl:input message="impl:resetRequest" name="resetRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:resetResponse" name="resetResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="shortURL">
+
+         <wsdl:input message="impl:shortURLRequest" name="shortURLRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:shortURLResponse" name="shortURLResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getStatistics">
+
+         <wsdl:input message="impl:getStatisticsRequest" name="getStatisticsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getStatisticsResponse" name="getStatisticsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="expandURL">
+
+         <wsdl:input message="impl:expandURLRequest" name="expandURLRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:expandURLResponse" name="expandURLResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ShortenerURLSoapBinding" type="impl:ShortenerURL">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="reset">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="resetRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="resetResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="shortURL">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="shortURLRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="shortURLResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getStatistics">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getStatisticsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getStatisticsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="expandURL">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="expandURLRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="expandURLResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ShortenerURLService">
+
+      <wsdl:port binding="impl:ShortenerURLSoapBinding" name="ShortenerURL">
+
+         <wsdlsoap:address location="http://localhost:8080/ShortenerURLWeb/services/ShortenerURL"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

@@ -1,0 +1,57 @@
+<html xmlns="http://www.w3c.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+<h:head></h:head>
+<h:body>
+    <h:form id="shortform">
+        <p:panelGrid id="xpanel" columns="2">
+            <f:facet name="header">Shortener URL</f:facet>
+ 
+            <h:outputLabel for="shortenerOriginalURL" value="Original URL:" />
+            <p:inputText id="shortenerOriginalURL" value="#{shortbean.shortenerOriginalURL}" label="Original URL:" style="width: 300px;"/>
+            <h:outputLabel for="shortenerShortedURL" value="Result:" />
+            <h:outputText id="shortenerShortedURL" value="#{shortbean.shortenerShortedURL}" />
+            <f:facet name="footer">
+                <p:commandButton action="#{shortbean.shortURL}" update=":shortform:xpanel"
+                    value="Short URL" icon="ui-icon-check" style="margin:0" />
+            </f:facet>
+        </p:panelGrid>
+        <br/>
+        <p:panelGrid id="ypanel" columns="2">
+            <f:facet name="header">Expander URL</f:facet>
+ 
+            <h:outputLabel for="expanderShortedURL" value="Shorted URL:" />
+            <p:inputText id="expanderShortedURL" value="#{shortbean.expanderShortedURL}" label="Expanded URL:" style="width: 300px;"/>
+            <h:outputLabel for="expanderOriginalURL" value="Result:" />
+            <h:outputText id="expanderOriginalURL" value="#{shortbean.expanderOriginalURL}" />
+            <f:facet name="footer">
+                <p:commandButton action="#{shortbean.expandURL}" update=":shortform:ypanel"
+                    value="Expand URL" icon="ui-icon-check" style="margin:0" />
+            </f:facet>
+        </p:panelGrid>
+        <br/>
+        <p:panelGrid id="zpanel" columns="2">
+            <f:facet name="header">Statistics</f:facet>
+ 
+            <h:outputLabel for="statisticsResult" value="Result:" />
+            <h:outputText id="statisticsResult" value="#{shortbean.statisticsResult}" />
+            <f:facet name="footer">
+                <p:commandButton action="#{shortbean.statistics}" update=":shortform:zpanel"
+                    value="Statistics" icon="ui-icon-check" style="margin:0" />
+            </f:facet>
+        </p:panelGrid>
+        <br/>
+        <p:panelGrid id="wpanel" columns="2">
+            <f:facet name="header">Reset</f:facet>
+ 
+            <h:outputLabel for="resetResult" value="Result:" />
+            <h:outputText id="resetResult" value="#{shortbean.resetResult}" />
+            <f:facet name="footer">
+                <p:commandButton action="#{shortbean.reset}" update=":shortform:wpanel"
+                    value="Reset" icon="ui-icon-check" style="margin:0" />
+            </f:facet>
+        </p:panelGrid>
+    </h:form>
+</h:body>
+</html>

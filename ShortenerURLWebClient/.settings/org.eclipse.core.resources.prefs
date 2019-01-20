@@ -1,0 +1,12 @@
+eclipse.preferences.version=1
+encoding//src/com/shortener/url/bo/BaseResponse.java=UTF-8
+encoding//src/com/shortener/url/bo/ResetResponse.java=UTF-8
+encoding//src/com/shortener/url/bo/analitics/StatisticsResponse.java=UTF-8
+encoding//src/com/shortener/url/bo/expander/ExpandURLRequest.java=UTF-8
+encoding//src/com/shortener/url/bo/expander/ExpandURLResponse.java=UTF-8
+encoding//src/com/shortener/url/bo/shortener/ShortURLRequest.java=UTF-8
+encoding//src/com/shortener/url/bo/shortener/ShortURLResponse.java=UTF-8
+encoding//src/com/shortener/url/ws/ShortenerURL.java=UTF-8
+encoding//src/com/shortener/url/ws/ShortenerURLService.java=UTF-8
+encoding//src/com/shortener/url/ws/ShortenerURLServiceLocator.java=UTF-8
+encoding//src/com/shortener/url/ws/ShortenerURLSoapBindingStub.java=UTF-8

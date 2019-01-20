@@ -10,21 +10,17 @@ The best development practices were used, with separation of responsibilities in
 
 3. Modules:
 
-- ShortenerURL
-Module responsible for implementing the URL shortening service.
+- ShortenerURL:Module responsible for implementing the URL shortening service.
 The com.shortener.url.service.ServiceFactory class is responsible for providing the interface between business services and persistence services.
 Currently the available persistence service is "in memory persistence" but new persistencies can be easily added since the classes have low coupling to each other.
 The entry point for webservice implementation is: com.shortener.url.ShortenerURL
 
-- ShortenerURLWeb
-Module responsible for exposing the URL shortening service as a SOA webservice.
+- ShortenerURLWeb: Module responsible for exposing the URL shortening service as a SOA webservice.
 The servlet com.shortener.url.servlet.ShortenerURLServlet is responsible for starting the shortening service and making it available to listen user  requests.
 
-- ShortenerURLWebClient
-Module responsible for implementing a JSF/Primefaces client and consume the shortening webservice.
+- ShortenerURLWebClient: Module responsible for implementing a JSF/Primefaces client and consume the shortening webservice.
 
-- ShortenerURLWebEAR
-Module responsible for grouping all project components into a single and deployable Enterprise project.
+- ShortenerURLWebEAR: Module responsible for grouping all project components into a single and deployable Enterprise project.
 
 
 4. Library dependencies:
